@@ -143,3 +143,51 @@
 .animate-marquee2 {
   animation: marquee2 30s linear infinite;
 }
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+  66% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 4.5s ease-in-out infinite;
+}

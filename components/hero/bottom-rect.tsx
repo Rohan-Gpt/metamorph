@@ -4,7 +4,7 @@ export default function BottomRect() {
   return (
     <div className="w-full h-full">
       <Image
-        src={"/bottom-paper-tear.png"}
+        src={"/bottom-paper-tear-small.png"}
         width={1920}
         height={1080}
         alt="Bottom Rect"

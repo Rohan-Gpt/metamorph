@@ -1,20 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, RefObject } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import CTA from "./cta";
 import TopRect from "./top-rect";
 import BottomRect from "./bottom-rect";
-import NavBar from "./navbar";
+// import NavBar from "./navbar"; // Remove local NavBar import
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  navbarRef: RefObject<HTMLDivElement | null>;
+}
+
+export default function HeroSection({ navbarRef }: HeroSectionProps) {
   const topRectRef = useRef<HTMLDivElement>(null);
   const bottomRectRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
-  const navbarRef = useRef<HTMLDivElement>(null);
+  // const navbarRef = useRef<HTMLDivElement>(null); // Remove local navbarRef
   const backgroundRef = useRef<HTMLDivElement>(null);
   const topImageRef = useRef<HTMLDivElement>(null);
   const bottomImageRef = useRef<HTMLDivElement>(null);
@@ -33,7 +37,9 @@ export default function HeroSection() {
     gsap.set(bottomRectRef.current, { y: "0%" });
     gsap.set(imageRef.current, { scale: 0.5, x: "0%" });
     gsap.set(videoRef.current, { x: isMobile ? "0%" : "120%" }); // Example: don't slide video on mobile
-    gsap.set(navbarRef.current, { y: "-100%" });
+    if (navbarRef.current) {
+      gsap.set(navbarRef.current, { y: "-100%" });
+    }
     gsap.set(backgroundRef.current, { scale: 1.2 });
 
     // Animation sequence
@@ -112,7 +118,7 @@ export default function HeroSection() {
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [navbarRef]);
 
   const handleVideoLoad = () => {
     // setVideoLoaded(true);
@@ -132,14 +138,10 @@ export default function HeroSection() {
         className="absolute inset-0 w-full h-full"
         style={{ transformOrigin: "center center" }}
       >
-        <Image src="/hero-bg.jpg" alt="Background" fill priority />
+        <Image src="/bg-smaller.png" alt="Background" fill priority />
       </div>
 
-      {/* Navbar that slides down from top */}
-
-      <nav ref={navbarRef} className=" sticky top-0 left-0 w-full z-50">
-        <NavBar />
-      </nav>
+      {/* NavBar removed from here */}
 
       {/* Top black rectangle */}
 
@@ -168,7 +170,7 @@ export default function HeroSection() {
       {/* Video frame that slides in from right */}
       <div
         ref={videoRef}
-        className="absolute hidden md:block bg-black right-10 top-1/2 transform -translate-y-1/2 w-[600px] h-[340px] bg-gray-900 rounded-lg overflow-hidden drop-shadow-2xl"
+        className="absolute hidden md:block bg-black right-10 top-1/2 transform -translate-y-1/2 w-[600px] h-[340px] rounded-lg overflow-hidden drop-shadow-2xl"
       >
         <div className="relative w-full h-full">
           {/* Video element */}
@@ -200,7 +202,6 @@ export default function HeroSection() {
               fill
               className="object-cover"
             />
-           
           </div>
         </div>
       </div>

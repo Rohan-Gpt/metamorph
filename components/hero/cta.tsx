@@ -16,7 +16,7 @@ export default function CTA() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className="flex items-center gap-2 bg-black rounded-lg px-4 md:px-8  py-4 md:py-2 shadow-md text-white">
+          <div className="flex items-center gap-2 bg-black rounded-lg px-4 md:px-8  py-4 md:py-2 text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300 shadow-white">
             <Image
               src="/devfolio-white.png"
               width={18}
@@ -33,7 +33,7 @@ export default function CTA() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className="flex items-center gap-2 bg-black rounded-lg px-4 md:px-8 py-4 md:py-2 shadow-md text-white">
+          <div className="flex items-center gap-2 bg-black rounded-lg px-4 md:px-8 py-4 md:py-2 text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-300 shadow-white">
             <Image
               src={"/discord-white.png"}
               width={23}
